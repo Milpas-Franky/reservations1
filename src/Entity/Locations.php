@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping\JoinColumn;
 
 
 #[ORM\Entity(repositoryClass: LocationsRepository::class)]
-#@ORM\Table(name='locations')
-#@UniqueEntity('slug')
+#[ORM\Table(name:'locations')]
+#[UniqueEntity('slug')]
 class Locations
 {
     #[ORM\Id]
@@ -37,7 +37,7 @@ class Locations
     #[ORM\Column(type: 'string', length: 30, nullable: true)]
     private $phone;
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
