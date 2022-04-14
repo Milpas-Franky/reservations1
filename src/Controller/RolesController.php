@@ -35,5 +35,4 @@ class RolesController extends AbstractController
             'role' => $role,
         ]);
     }
-
 }
