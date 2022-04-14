@@ -19,7 +19,7 @@ class LocationsFixtures extends Fixture implements DependentFixtureInterface
                 'slug'=>null,
                 'designation'=>'Espace Delvaux / La Vénerie',
                 'address'=>'3 rue Gratès',
-                'locality'=>'Uccle',
+                'locality'=>'Watermael-Boitsfort',
                 'website'=>'https://www.lavenerie.be',
                 'phone'=>'+32 (0)2/663.85.50',
             ],

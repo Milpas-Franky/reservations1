@@ -9,7 +9,8 @@ use Doctrine\ORM\Mapping\JoinColumn;
 
 
 #[ORM\Entity(repositoryClass: LocationsRepository::class)]
-#@ORM\Table(name="locations")
+#@ORM\Table(name='locations')
+#@UniqueEntity('slug')
 class Locations
 {
     #[ORM\Id]
