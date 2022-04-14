@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LocationsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping\JoinColumn;
@@ -28,7 +30,7 @@ class Locations
     private $address;
 
     #[ORM\ManyToOne(targetEntity: Localities::class, inversedBy: 'locations')]
-    #@JoinColumn(onDelete="RESTRICT")
+    #[JoinColumn(onDelete :'RESTRICT')]
     private $locality;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -36,6 +38,14 @@ class Locations
 
     #[ORM\Column(type: 'string', length: 30, nullable: true)]
     private $phone;
+
+    #[ORM\OneToMany(mappedBy: 'location', targetEntity: Shows::class)]
+    private $shows;
+
+    public function __construct()
+    {
+        $this->shows = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -110,6 +120,36 @@ class Locations
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Shows>
+     */
+    public function getShows(): Collection
+    {
+        return $this->shows;
+    }
+
+    public function addShow(Shows $show): self
+    {
+        if (!$this->shows->contains($show)) {
+            $this->shows[] = $show;
+            $show->setLocation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShow(Shows $show): self
+    {
+        if ($this->shows->removeElement($show)) {
+            // set the owning side to null (unless already changed)
+            if ($show->getLocation() === $this) {
+                $show->setLocation(null);
+            }
+        }
 
         return $this;
     }
