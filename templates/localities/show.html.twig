@@ -2,6 +2,11 @@
 {% block title %}Fiche d'une localité{% endblock %}
 
 {% block body %}
-    <h1>{{ localitie.postalcode }} {{ localitie.locality }}</h1>
+    <h1>{{ localitie.postalcode }} {{ localitie.locality|capitalize }}</h1>
+        <ul>
+    {% for location in locality.locations %}
+        <li>{{ location.designation }}</li>
+    {% endfor %}
+    </ul>
 	<nav><a href="{{ path('app_localities') }}">Retour à l'index</a></nav>
 {% endblock %}
