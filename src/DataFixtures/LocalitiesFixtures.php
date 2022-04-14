@@ -14,7 +14,7 @@ class LocalitiesFixtures extends Fixture
             ['postal_code'=>'1000','locality'=>'Bruxelles'],
             ['postal_code'=>'1030','locality'=>'Schaerbeek'],
             ['postal_code'=>'1050','locality'=>'Ixelles'],
-            ['postalCode' => '1170', 'locality' => 'Watermael-Boitsfort',],
+            ['postal_code' => '1170', 'locality' => 'Watermael-Boitsfort',],
         ];
         
         foreach ($localities as $record) {
