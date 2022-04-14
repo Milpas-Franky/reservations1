@@ -50,8 +50,8 @@ class LocationsFixtures extends Fixture implements DependentFixtureInterface
         ];
         
         foreach ($locations as $record) {
-		$slugify = new Slugify();
-	    $location_slug = $slugify->slugify($record['designation']);
+		$slugigy = new Slugify();
+	    $location_slug = $slugigy->slugify($record['designation']);
             $location = new Locations();
             $location->setSlug($location_slug);
             $location->setDesignation($record['designation']);
@@ -60,8 +60,6 @@ class LocationsFixtures extends Fixture implements DependentFixtureInterface
             $location->setWebsite($record['website']);
             $location->setPhone($record['phone']);
             $manager->persist($location);
-
-            $this->addReference($location->getSlug(), $location);
 
         }
 

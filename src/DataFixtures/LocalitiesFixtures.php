@@ -12,11 +12,9 @@ class LocalitiesFixtures extends Fixture
     {
         $localities = [
             ['postal_code'=>'1000','locality'=>'Bruxelles'],
-            ['postal_code'=>'1020','locality'=>'Laeken'],
             ['postal_code'=>'1030','locality'=>'Schaerbeek'],
             ['postal_code'=>'1050','locality'=>'Ixelles'],
-            ['postal_code'=>'1070','locality'=>'Anderlecht'],
-            ['postal_code'=>'1180','locality'=>'Uccle'],
+            ['postalCode' => '1170', 'locality' => 'Watermael-Boitsfort',],
         ];
         
         foreach ($localities as $record) {
@@ -24,6 +22,8 @@ class LocalitiesFixtures extends Fixture
             $locality->setPostalCode($record['postal_code']);
             $locality->setLocality($record['locality']);
             $manager->persist($locality);
+
+            $this->addReference($record['locality'], $locality);
         }
 
         // $product = new Product();
