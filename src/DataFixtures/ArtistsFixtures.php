@@ -33,11 +33,12 @@ class ArtistsFixtures extends Fixture
             $artist->setLastname($record['lastname']);
 
             $manager->persist($artist);
+
+            $this->addReference( $record['firstname']."-".$record['lastname'],
+                $artist
+        );
+
         }
-
-        // $product = new Product();
-        // $manager->persist($product);
-
         $manager->flush();
     }
 }

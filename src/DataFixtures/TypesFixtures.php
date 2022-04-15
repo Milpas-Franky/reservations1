@@ -21,10 +21,9 @@ class TypesFixtures extends Fixture
             $type->setType($record['type']);
             
             $manager->persist($type);
-        }
 
-        // $product = new Product();
-        // $manager->persist($product);
+            $this->addReference($record['type'],$type);
+        }
 
         $manager->flush();
     }
