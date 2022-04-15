@@ -29,7 +29,7 @@ class LocalitiesController extends AbstractController
      */
     public function show($id)
     {
-        $repository = $this->getDoctrine()->getRepository(Localities::class);
+       $repository = $this->getDoctrine()->getRepository(Localities::class);
        $localitie = $repository->find($id);
 
         return $this->render('localities/show.html.twig', [

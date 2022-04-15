@@ -42,9 +42,13 @@ class Locations
     #[ORM\OneToMany(mappedBy: 'location', targetEntity: Shows::class)]
     private $shows;
 
+    #[ORM\OneToMany(mappedBy: 'the_location', targetEntity: Representations::class)]
+    private $representations;
+
     public function __construct()
     {
         $this->shows = new ArrayCollection();
+        $this->representations = new ArrayCollection();
     }
 
     public function getId()
@@ -124,30 +128,32 @@ class Locations
         return $this;
     }
 
+  
+
     /**
-     * @return Collection<int, Shows>
+     * @return Collection<int, Representations>
      */
-    public function getShows(): Collection
+    public function getRepresentations(): Collection
     {
-        return $this->shows;
+        return $this->representations;
     }
 
-    public function addShow(Shows $show): self
+    public function addRepresentation(Representations $representation): self
     {
-        if (!$this->shows->contains($show)) {
-            $this->shows[] = $show;
-            $show->setLocation($this);
+        if (!$this->representations->contains($representation)) {
+            $this->representations[] = $representation;
+            $representation->setTheLocation($this);
         }
 
         return $this;
     }
 
-    public function removeShow(Shows $show): self
+    public function removeRepresentation(Representations $representation): self
     {
-        if ($this->shows->removeElement($show)) {
+        if ($this->representations->removeElement($representation)) {
             // set the owning side to null (unless already changed)
-            if ($show->getLocation() === $this) {
-                $show->setLocation(null);
+            if ($representation->getTheLocation() === $this) {
+                $representation->setTheLocation(null);
             }
         }
 
