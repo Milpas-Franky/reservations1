@@ -3,5 +3,10 @@
 
 {% block body %}
     <h1>{{ type.type|capitalize }}</h1>
+    <ul>
+    {% for artist in type.artists %}
+        <li>{{ artist.firstname }} {{ artist.lastname }}</li>
+    {% endfor %}
+    </ul>
     <nav><a href="{{ path('app_types') }}">Retour à l'index</a></nav>
 {% endblock %}
