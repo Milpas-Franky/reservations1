@@ -20,19 +20,6 @@ class Types
     #[ORM\Column(type: 'string', length: 60)]
     private $type;
 
-    #[ORM\ManyToMany(targetEntity: Artists::class, mappedBy: 'types')]
-    private $artists;
-
-    public function __construct()
-    {
-        $this->artists = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getType(): ?string
     {
         return $this->type;
@@ -41,33 +28,6 @@ class Types
     public function setType(string $type): self
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Artists>
-     */
-    public function getArtists(): Collection
-    {
-        return $this->artists;
-    }
-
-    public function addArtist(Artists $artist): self
-    {
-        if (!$this->artists->contains($artist)) {
-            $this->artists[] = $artist;
-            $artist->addType($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArtist(Artists $artist): self
-    {
-        if ($this->artists->removeElement($artist)) {
-            $artist->removeType($this);
-        }
 
         return $this;
     }
