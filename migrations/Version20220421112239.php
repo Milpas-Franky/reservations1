@@ -23,6 +23,7 @@ final class Version20220421112239 extends AbstractMigration
         $this->addSql('ALTER TABLE artists_types DROP FOREIGN KEY FK_29173A3A8EB23357');
         $this->addSql('ALTER TABLE artists_types DROP FOREIGN KEY FK_29173A3A54A05007');
         $this->addSql('DROP INDEX IDX_29173A3A54A05007 ON artists_types');
+        $this->addSql('DROP INDEX IDX_29173A3A8EB23357 ON artists_types');
         $this->addSql('ALTER TABLE artists_types ADD id INT AUTO_INCREMENT NOT NULL, ADD artist_id INT NOT NULL, ADD type_id INT NOT NULL, DROP artists_id, DROP types_id, DROP PRIMARY KEY, ADD PRIMARY KEY (id)');
         $this->addSql('ALTER TABLE artists_types ADD CONSTRAINT FK_29173A3AB7970CF8 FOREIGN KEY (artist_id) REFERENCES artists (id)');
         $this->addSql('ALTER TABLE artists_types ADD CONSTRAINT FK_29173A3AC54C8C93 FOREIGN KEY (type_id) REFERENCES types (id)');
