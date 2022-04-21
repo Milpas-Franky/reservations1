@@ -21,9 +21,8 @@ class Types
     #[ORM\Column(type: 'string', length: 60)]
     private $type;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Artist::class", mappedBy="types")
-     */
+    #[ORM\ManyToMany(targetEntity : Artists::class, mappedBy : 'types')]
+    
     private $artists;
 
     public function __construct()
@@ -49,7 +48,7 @@ class Types
         return $this;
     }
 
-        /**
+    /**
      * @return Collection|Artists[]
      */
     public function getArtists(): Collection
