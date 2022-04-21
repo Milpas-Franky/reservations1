@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RolesRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 class RolesController extends AbstractController
@@ -26,9 +27,9 @@ class RolesController extends AbstractController
     /**
      * @Route("/roles/{id}", name="roles_show")
      */
-    public function show($id)
+    public function show(ManagerRegistry $doctrine,$id)
     {
-        $repository = $this->getDoctrine()->getRepository(Roles::class);
+        $repository = $doctrine->getRepository(Roles::class);
         $role = $repository->find($id);
 
         return $this->render('roles/show.html.twig', [

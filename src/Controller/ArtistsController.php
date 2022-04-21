@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArtistsRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Artists;
 
 class ArtistsController extends AbstractController
 {
@@ -25,13 +27,15 @@ class ArtistsController extends AbstractController
         /**
      * @Route("/artists/{id}", name="artists_show")
      */
-    public function show($id)
+    public function show(ManagerRegistry $doctrine, $id)
     {
-        $repository = $this->getDoctrine()->getRepository(Artists::class);
-        $artists = $repository->find($id);
+        $repository = $doctrine->getRepository(Artists::class);
+        $artist = $repository->find($id);
+
+        //dd($artist->getTypes()[1]->getType());
 
         return $this->render('artists/show.html.twig', [
-            'artists' => $artists,
+            'artist' => $artist,
         ]);
     }
 

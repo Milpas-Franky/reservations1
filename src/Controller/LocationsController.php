@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Locations;
 use App\Repository\LocationsRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 class LocationsController extends AbstractController
@@ -26,9 +27,9 @@ class LocationsController extends AbstractController
     /**
      * @Route("/locations/{id}", name="locations_show")
      */
-    public function show($id)
+    public function show(ManagerRegistry $doctrine, $id)
     {
-        $repository = $this->getDoctrine()->getRepository(Location::class);
+        $repository = $doctrine->getRepository(Locations::class);
         $location = $repository->find($id);
 
         return $this->render('locations/show.html.twig', [
