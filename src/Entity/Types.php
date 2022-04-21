@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TypesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TypesRepository::class)]
@@ -20,7 +21,8 @@ class Types
     #[ORM\Column(type: 'string', length: 60)]
     private $type;
 
-    #[ORM\ManyToMany(targetEntity: Artists::class, mappedBy: 'types')]
+    #[ORM\ManyToMany(targetEntity : Artists::class, mappedBy : 'types')]
+    
     private $artists;
 
     public function __construct()
@@ -32,6 +34,7 @@ class Types
     {
         return $this->id;
     }
+
 
     public function getType(): ?string
     {
@@ -46,7 +49,7 @@ class Types
     }
 
     /**
-     * @return Collection<int, Artists>
+     * @return Collection|Artists[]
      */
     public function getArtists(): Collection
     {
@@ -71,4 +74,5 @@ class Types
 
         return $this;
     }
+
 }
