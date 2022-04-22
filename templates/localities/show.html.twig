@@ -4,7 +4,7 @@
 {% block body %}
     <h1>{{ localitie.postalcode }} {{ localitie.locality|capitalize }}</h1>
         <ul>
-    {% for location in locality.locations %}
+    {% for location in localitie.locations %}
         <li>{{ location.designation }}</li>
     {% endfor %}
     </ul>
