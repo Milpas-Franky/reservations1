@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Representations;
 use App\Repository\RepresentationsRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 class RepresentationsController extends AbstractController
@@ -26,9 +27,9 @@ class RepresentationsController extends AbstractController
     /**
      * @Route("/representations/{id}", name="representations_show")
      */
-    public function show($id)
+    public function show(ManagerRegistry $doctrine, $id)
     {
-        $repository = $this->getDoctrine()->getRepository(Representations::class);
+        $repository = $doctrine->getRepository(Representations::class);
         $representation = $repository->find($id);
 
         return $this->render('representations/show.html.twig', [
