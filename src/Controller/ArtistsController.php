@@ -15,10 +15,10 @@ class ArtistsController extends AbstractController
     {
 
         //$repository = $this->getRepository(Artists::class);
-        $artist = $repository->findAll();
+        $artists = $repository->findAll();
 
         return $this->render('artists/index.html.twig', [
-            'artist' => $artist,
+            'artists' => $artists,
             'resource' => 'artistes',
         ]);
     }
@@ -29,10 +29,10 @@ class ArtistsController extends AbstractController
     public function show(ManagerRegistry $doctrine, $id)
     {
         $repository = $doctrine->getRepository(Artists::class);
-        $artist = $repository->find($id);
+        $artists = $repository->find($id);
 
         return $this->render('artists/show.html.twig', [
-            'artist' => $artist,
+            'artists' => $artists,
         ]);
     }
 }

@@ -6,7 +6,7 @@
     <h2>Liste des artistes</h2>
     <ul>
     {% for artistType in type.artists %}
-        <li>{{ artist.firstname }} {{ artist.lastname }}</li>
+        <li>{{ artistType.artist.firstname }} {{ artistType.artist.lastname }}</li>
     {% endfor %}
     </ul>
 
