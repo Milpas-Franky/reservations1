@@ -117,7 +117,7 @@ class ArtistsTypesFixtures extends Fixture implements DependentFixtureInterface
         foreach ($artistTypes as $record) {
             //Récupérer l'artiste (entité principale)
             $artist = $this->getReference(
-                $record['artist_firstname'].'-'.$record['artist_lastname']
+            $record['artist_firstname'].'-'.$record['artist_lastname']
             );
             
             //Récupérer le type (entité secondaire)
