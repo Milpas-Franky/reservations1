@@ -137,7 +137,7 @@ class ArtistsTypesShowsFixtures extends Fixture implements DependentFixtureInter
         
         foreach ($artistTypeShows as $record) {           
            //Récupérer le spectacle (entité principale)
-            $show = $this->getReference($record['show_slug']);
+            $shows = $this->getReference($record['show_slug']);
 
             //Récupérer l'artiste (entité secondaire)
             $artistType = $this->getReference(
@@ -146,10 +146,10 @@ class ArtistsTypesShowsFixtures extends Fixture implements DependentFixtureInter
                     .'-'.$record['type']
             );
             
-            $show->addArtistsTypes($artistType);
+            $shows->addArtistsTypes($artistType);
             
             //Persister l'entité principale
-            $manager->persist($show);
+            $manager->persist($shows);
         }
         $manager->flush();
     }

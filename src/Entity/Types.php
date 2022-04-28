@@ -20,8 +20,7 @@ class Types
     #[ORM\Column(type: 'string', length: 60)]
     private $type;
 
-    #[ORM\OneToMany(targetEntity : ArtistsTypes::class, mappedBy : 'types', orphanRemoval :true)]
-    
+    #[ORM\OneToMany(targetEntity : ArtistsTypes::class, mappedBy : 'type', orphanRemoval :true)]
     private $artists;
 
     public function __construct()
