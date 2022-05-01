@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="ArtistsTypesRepository::class")
  * @ORM\Table(name="artist_type",uniqueConstraints={
- *       @UniqueConstraint(name="artists_types_idx", columns={"artist_id", "type_id"})})
+ *       @UniqueConstraint(name="artist_type_idx", columns={"artist_id", "type_id"})})
  * @UniqueEntity(
  *      fields={"artist","type"},
  *      message="This artist is already defined for this type of job in the database."
@@ -81,21 +81,21 @@ class ArtistsTypes
         return $this->shows;
     }
 
-    public function addShow(Shows $show): self
+    public function addShow(Shows $shows): self
     {
-        if (!$this->shows->contains($show)) {
-            $this->shows[] = $show;
-            $show->addArtistType($this);
+        if (!$this->shows->contains($shows)) {
+            $this->shows[] = $shows;
+            $shows->addArtistType($this);
         }
 
         return $this;
     }
 
-    public function removeShow(Shows $show): self
+    public function removeShow(Shows $shows): self
     {
-        if ($this->shows->contains($show)){
-            $this->shows->removeElement($show);
-            $show->removeArtistType($this);
+        if ($this->shows->contains($shows)){
+            $this->shows->removeElement($shows);
+            $shows->removeArtistType($this);
         }
 
         return $this;
