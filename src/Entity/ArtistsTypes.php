@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\ArtistsTypesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -11,9 +12,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ArtistsTypesRepository::class)]
 /**
- * @ORM\Entity(repositoryClass="ArtistTypeRepository::class")
+ * @ORM\Entity(repositoryClass="ArtistsTypesRepository::class")
  * @ORM\Table(name="artist_type",uniqueConstraints={
- *       @UniqueConstraint(name="artist_type_idx", columns={"artist_id", "type_id"})})
+ *       @UniqueConstraint(name="artists_types_idx", columns={"artist_id", "type_id"})})
  * @UniqueEntity(
  *      fields={"artist","type"},
  *      message="This artist is already defined for this type of job in the database."
@@ -35,7 +36,7 @@ class ArtistsTypes
     #[ORM\JoinColumn(nullable: false)]
     private $type;
 
-    #[ORM\ManyToMany(targetEntity: Shows::class, mappedBy: 'artistTypes')]
+    #[ORM\ManyToMany(targetEntity: Shows::class, mappedBy: 'artistsTypes')]
     private $shows;
 
     public function __construct()

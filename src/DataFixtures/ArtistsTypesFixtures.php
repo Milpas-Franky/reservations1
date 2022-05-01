@@ -122,21 +122,24 @@ class ArtistsTypesFixtures extends Fixture implements DependentFixtureInterface
             
             //Récupérer le type (entité secondaire)
             $type = $this->getReference($record['type']);
+            $at = new ArtistsTypes();
+            $at->setArtist($artist);
+            $at->setType($type);
 
             //Définir son type
             $artist->addType($type);
-            
             $this->addReference(
                     $record['artist_firstname']
                     .'-'.$record['artist_lastname']
-                    .'-'.$record['type'],$artistTypes);
-
+                    .'-'.$record['type'],$at);
             
-          
-
+            $this->setReference(
+                    $record['artist_firstname']
+                    .'-'.$record['artist_lastname']
+                    .'-'.$record['type'],$at);
             
             //Persister l'entité principale
-            $manager->persist($artistTypes);            
+            $manager->persist($at);            
         }
 
         $manager->flush();
