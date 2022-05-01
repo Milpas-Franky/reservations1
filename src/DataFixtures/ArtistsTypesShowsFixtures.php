@@ -146,7 +146,7 @@ class ArtistsTypesShowsFixtures extends Fixture implements DependentFixtureInter
                     .'-'.$record['type']
             );
             
-            $show->addArtistsTypes($artistType);
+            $show->addArtistType($artistType);
             
             //Persister l'entité principale
             $manager->persist($show);
