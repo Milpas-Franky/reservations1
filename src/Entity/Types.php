@@ -47,7 +47,7 @@ class Types
     }
 
     /**
-     * @return Collection|ArtistsTypes[]
+     * @return Collection<int, ArtistsTypes>
      */
     public function getArtists(): Collection
     {
