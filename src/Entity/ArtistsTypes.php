@@ -85,7 +85,7 @@ class ArtistsTypes
     {
         if (!$this->shows->contains($shows)) {
             $this->shows[] = $shows;
-            $shows->addArtistType($this);
+            $shows->addArtistsType($this);
         }
 
         return $this;
@@ -95,7 +95,7 @@ class ArtistsTypes
     {
         if ($this->shows->contains($shows)){
             $this->shows->removeElement($shows);
-            $shows->removeArtistType($this);
+            $shows->removeArtistsType($this);
         }
 
         return $this;
