@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 #[ORM\Entity(repositoryClass: ArtistsTypesRepository::class)]
 /**
  * @ORM\Entity(repositoryClass="ArtistsTypesRepository::class")
- * @ORM\Table(name="artist_type",uniqueConstraints={
+ * @ORM\Table(name="artists_types",uniqueConstraints={
  *       @UniqueConstraint(name="artist_type_idx", columns={"artist_id", "type_id"})})
  * @UniqueEntity(
  *      fields={"artist","type"},
@@ -81,21 +81,21 @@ class ArtistsTypes
         return $this->shows;
     }
 
-    public function addShow(Shows $shows): self
+    public function addShow(Shows $show): self
     {
-        if (!$this->shows->contains($shows)) {
-            $this->shows[] = $shows;
-            $shows->addArtistsType($this);
+        if (!$this->shows->contains($show)) {
+            $this->shows[] = $show;
+            $show->addArtistsType($this);
         }
 
         return $this;
     }
 
-    public function removeShow(Shows $shows): self
+    public function removeShow(Shows $show): self
     {
-        if ($this->shows->contains($shows)){
-            $this->shows->removeElement($shows);
-            $shows->removeArtistsType($this);
+        if ($this->shows->contains($show)){
+            $this->shows->removeElement($show);
+            $show->removeArtistsType($this);
         }
 
         return $this;
