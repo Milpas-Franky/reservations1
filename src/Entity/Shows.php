@@ -180,7 +180,7 @@ class Shows
      */
     public function getArtistsTypes(): Collection
     {
-        return $this->artistTypes;
+        return $this->artistsTypes;
     }
 
     public function addArtistsType(ArtistsTypes $artistsType): self

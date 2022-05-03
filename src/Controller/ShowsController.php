@@ -32,13 +32,13 @@ class ShowsController extends AbstractController
         $repository = $doctrine->getRepository(Shows::class);
         $show = $repository->find($id);
 
-        foreach($show->getArtistTypes() as $at) {
+        /*foreach($show->getArtistsTypes() as $at) {
             $collaborateurs[$at->getType()->getType()][] = $at->getArtist();
 
-        }
+        }*/
         return $this->render('shows/show.html.twig', [
             'show' => $show,
-            'collaborateurs' => $collaborateurs,
+            //'collaborateurs' => $collaborateurs,
         ]);
     }
 
