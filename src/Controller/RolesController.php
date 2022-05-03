@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RolesRepository;
+use App\Entity\Roles;
 use Doctrine\Persistence\ManagerRegistry;
 
 
