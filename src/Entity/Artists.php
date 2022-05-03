@@ -68,7 +68,7 @@ class Artists
         return $this->types;
     }
 
-    public function addTypes(ArtistsTypes $type): self
+    public function addType(ArtistsTypes $type): self
     {
         if (!$this->types->contains($type)) {
             $this->types[] = $type;
