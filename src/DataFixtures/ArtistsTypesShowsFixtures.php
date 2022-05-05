@@ -114,12 +114,7 @@ class ArtistsTypesShowsFixtures extends Fixture implements DependentFixtureInter
                 'type'=>'auteur',
                 'show_slug'=>'manneke',
             ],
-            [
-                'artist_firstname'=>'Philippe',
-                'artist_lastname'=>'Laurent',
-                'type'=>'scénographe',
-                'show_slug'=>'manneke',
-            ],
+         
             [
                 'artist_firstname'=>'Pierre',
                 'artist_lastname'=>'Wayburn',
