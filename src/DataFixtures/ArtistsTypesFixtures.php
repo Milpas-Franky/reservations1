@@ -97,11 +97,7 @@ class ArtistsTypesFixtures extends Fixture implements DependentFixtureInterface
                 'artist_lastname'=>'Gauthier',
                 'type'=>'auteur',
             ],
-            [
-                'artist_firstname'=>'Philippe',
-                'artist_lastname'=>'Laurent',
-                'type'=>'scénographe',
-            ],
+            
             [
                 'artist_firstname'=>'Pierre',
                 'artist_lastname'=>'Wayburn',
