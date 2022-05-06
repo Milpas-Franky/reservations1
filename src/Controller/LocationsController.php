@@ -29,7 +29,11 @@ class LocationsController extends AbstractController
      */
     public function show(ManagerRegistry $doctrine, $id)
     {
+<<<<<<< HEAD
         $repository = $doctrine->getRepository(Location::class);
+=======
+        $repository = $doctrine->getRepository(Locations::class);
+>>>>>>> tablePivot
         $location = $repository->find($id);
 
         return $this->render('locations/show.html.twig', [

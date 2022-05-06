@@ -27,13 +27,22 @@ class ShowsController extends AbstractController
         /**
      * @Route("/shows/{id}", name="shows_show")
      */
+<<<<<<< HEAD
     public function show(ManagerRegistry $doctrine,$id)
+=======
+    public function show(ManagerRegistry $doctrine, $id)
+>>>>>>> tablePivot
     {
         $repository = $doctrine->getRepository(Shows::class);
         $show = $repository->find($id);
 
+        foreach($show->getArtistsTypes() as $at) {
+            $collaborateurs[$at->getType()->getType()][] = $at->getArtist();
+
+        }
         return $this->render('shows/show.html.twig', [
             'show' => $show,
+            'collaborateurs' => $collaborateurs,
         ]);
     }
 

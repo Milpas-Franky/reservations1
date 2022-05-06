@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RolesRepository;
+<<<<<<< HEAD
+=======
+use App\Entity\Roles;
+>>>>>>> tablePivot
 use Doctrine\Persistence\ManagerRegistry;
 
 
@@ -27,7 +31,11 @@ class RolesController extends AbstractController
     /**
      * @Route("/roles/{id}", name="roles_show")
      */
+<<<<<<< HEAD
     public function show(ManagerRegistry $doctrine, $id)
+=======
+    public function show(ManagerRegistry $doctrine,$id)
+>>>>>>> tablePivot
     {
         $repository = $doctrine->getRepository(Roles::class);
         $role = $repository->find($id);

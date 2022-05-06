@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 
 
@@ -46,9 +47,13 @@ class Shows
     #[ORM\OneToMany(mappedBy: 'the_show', targetEntity: Representations::class, orphanRemoval: true)]
     private $representations;
 
+    #[ORM\ManyToMany(targetEntity: ArtistsTypes::class, inversedBy: 'shows')]
+    private $artistsTypes;
+
     public function __construct()
     {
         $this->representations = new ArrayCollection();
+        $this->artistsTypes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -166,6 +171,30 @@ class Shows
                 $representation->setTheShow(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ArtistsTypes>
+     */
+    public function getArtistsTypes(): Collection
+    {
+        return $this->artistsTypes;
+    }
+
+    public function addArtistsType(ArtistsTypes $artistsType): self
+    {
+        if (!$this->artistsTypes->contains($artistsType)) {
+            $this->artistsTypes[] = $artistsType;
+        }
+
+        return $this;
+    }
+
+    public function removeArtistsType(ArtistsTypes $artistsType): self
+    {
+        $this->artistsTypes->removeElement($artistsType);
 
         return $this;
     }

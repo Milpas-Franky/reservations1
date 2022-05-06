@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\TypesRepository;
+<<<<<<< HEAD
+=======
+use App\Entity\Types;
+>>>>>>> tablePivot
 use Doctrine\Persistence\ManagerRegistry;
 
 class TypesController extends AbstractController
