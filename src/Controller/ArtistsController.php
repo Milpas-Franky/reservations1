@@ -7,10 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArtistsRepository;
 use Doctrine\Persistence\ManagerRegistry;
-<<<<<<< HEAD
-=======
 use App\Entity\Artists;
->>>>>>> tablePivot
 
 class ArtistsController extends AbstractController
 {
@@ -33,13 +30,9 @@ class ArtistsController extends AbstractController
     public function show(ManagerRegistry $doctrine, $id)
     {
         $repository = $doctrine->getRepository(Artists::class);
-<<<<<<< HEAD
-        $artists = $repository->find($id);
-=======
         $artist = $repository->find($id);
 
         //dd($artist->getTypes()[1]->getType());
->>>>>>> tablePivot
 
         return $this->render('artists/show.html.twig', [
             'artist' => $artist,
