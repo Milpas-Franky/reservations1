@@ -8,10 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Localities;
 use App\Repository\LocalitiesRepository;
 use Doctrine\Persistence\ManagerRegistry;
-<<<<<<< HEAD
-
-=======
->>>>>>> tablePivot
 
 
 class LocalitiesController extends AbstractController
@@ -32,11 +28,7 @@ class LocalitiesController extends AbstractController
         /**
      * @Route("/localities/{id}", name="localities_show")
      */
-<<<<<<< HEAD
-    public function show(ManagerRegistry $doctrine,$id)
-=======
     public function show(ManagerRegistry $doctrine, $id)
->>>>>>> tablePivot
     {
        $repository = $doctrine->getRepository(Localities::class);
        $localitie = $repository->find($id);

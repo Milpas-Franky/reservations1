@@ -9,6 +9,7 @@ use App\Repository\ArtistsRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Artists;
 
+
 class ArtistsController extends AbstractController
 {
     #[Route('/artists', name: 'app_artists')]
